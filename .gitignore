@@ -1,0 +1,7 @@
+.venv/
+dist/
+Output/
+__pycache__/
+*.pyc
+*.spec
+.vscode/

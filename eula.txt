@@ -1,0 +1,22 @@
+KEYFLOW — END-USER LICENSE AGREEMENT
+
+Last Updated: October 2026
+
+IMPORTANT — READ CAREFULLY BEFORE INSTALLING OR USING THIS SOFTWARE.
+
+By installing, copying, or otherwise using KeyFlow ("Software"), you agree to be bound by the terms of this End-User License Agreement ("Agreement"). If you do not agree, do not install or use the Software.
+
+1. LICENSE GRANT
+KeyFlow grants you a limited, non-exclusive, revocable, non-transferable license to install and use the Software on any device you own or control.
+
+2. RESTRICTIONS
+You may not:
+- Reverse engineer, decompile, or disassemble the Software.
+- Rent, lease, or lend the Software.
+- Use the Software for any illegal or malicious purposes, including unauthorized remote typing or keylogging.
+
+3. DISCLAIMER OF WARRANTY
+The Software is provided "AS IS", without warranty of any kind. The authors shall not be liable for any damages arising from the use of this Software.
+
+4. TERMINATION
+This Agreement is effective until terminated. Your rights under this Agreement will terminate automatically without notice if you fail to comply with any of its terms.
