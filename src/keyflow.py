@@ -61,7 +61,7 @@ PAGE = r'''<!doctype html>
 <title>KeyFlow</title>
 <style>
 :root{
-  --text:#f2f6fc; --mute:rgba(235,242,255,.62); --mint:#6cf0cb; --mint-ink:#06352b; --red:#ff8f8f;
+  --text:#f2f6fc; --mute:rgba(235,242,255,.62); --mint:#a855f7; --mint-ink:#ffffff; --red:#ff8f8f;
   --glass-bg:linear-gradient(135deg,rgba(255,255,255,.17),rgba(255,255,255,.06));
   --glass-edge:rgba(255,255,255,.2);
   --inner:rgba(255,255,255,.1);
@@ -183,7 +183,7 @@ details[open] summary::after{content:"\2212"}
 .dock>div{max-width:536px;margin:0 auto;padding:8px;display:flex;gap:8px;border-radius:32px}
 .btn{flex:1;min-height:56px;border:0;border-radius:24px;font-weight:700;font-size:17px;cursor:pointer;transition:transform .12s}
 .btn:active{transform:scale(.97)}
-.btn.go{background:linear-gradient(#8ff7da,var(--mint));color:var(--mint-ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 6px 20px rgba(108,240,203,.35)}
+.btn.go{background:linear-gradient(#c084fc,var(--mint));color:var(--mint-ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 6px 20px rgba(168,85,247,.35)}
 .btn.go:disabled{opacity:.6}
 .btn.stop{flex:0 0 104px;background:rgba(255,120,120,.16);border:1px solid rgba(255,140,140,.35);color:var(--red)}
 .toast{position:fixed;left:50%;bottom:calc(98px + env(safe-area-inset-bottom));z-index:5;display:flex;align-items:center;gap:14px;
@@ -783,7 +783,7 @@ class KeyFlowApp(ctk.CTk):
         self.geometry("600x480")
         self.resizable(False, False)
         ctk.set_appearance_mode("dark")
-        ctk.set_default_color_theme("blue")
+        ctk.set_default_color_theme("green")
         self.protocol("WM_DELETE_WINDOW", self.hide_window)
         
         self.url = f"http://{lan_ip()}:{PORT}"
@@ -853,7 +853,7 @@ class KeyFlowApp(ctk.CTk):
                 
         ctk.CTkButton(self, text="Activate", font=ctk.CTkFont(size=16, weight="bold"), command=do_activate).pack(pady=20)
         
-        ctk.CTkLabel(self, text="v1.0.5 \u00b7 Secure Mode", font=ctk.CTkFont(size=11), text_color="gray").pack(side="bottom", pady=20)
+        ctk.CTkLabel(self, text="v1.1.0 \u00b7 Secure Mode", font=ctk.CTkFont(size=11), text_color="gray").pack(side="bottom", pady=20)
 
     def show_start_screen(self):
         self.clear_window()
