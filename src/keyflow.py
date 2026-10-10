@@ -560,7 +560,7 @@ def press_newline(mode, nxt):
         return
     tap(Key.enter)
     if mode == "code":
-        time.sleep(0.08)
+        time.sleep(0.25)
         tap(Key.home, Key.shift)
         kb.type(" ")
         tap(Key.backspace)
