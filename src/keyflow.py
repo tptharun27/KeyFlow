@@ -50,7 +50,7 @@ else:
         pass
 
 MAX_CHARS = 200_000
-MODES = ("code", "shift", "enter", "flat")
+MODES = ("code", "shift", "enter")
 
 PAGE = r'''<!doctype html>
 <html lang="en">
@@ -288,8 +288,7 @@ const $ = s => document.querySelector(s);
 const MODES = {
   code:  ["Code",        "Presses Enter, then overwrites the editor's auto-indent so your original indentation is kept exactly."],
   shift: ["Shift+Enter", "Adds a line break without sending. Use it in WhatsApp, Slack, Discord and Teams."],
-  enter: ["Enter",       "Plain Enter at every line break. Best for editors with auto-indent turned off."],
-  flat:  ["One line",    "Joins everything into one line with spaces. Enter is never pressed."]
+  enter: ["Enter",       "Plain Enter at every line break. Best for editors with auto-indent turned off."]
 };
 const PRESETS = [["Slow",5],["Natural",14],["Fast",40],["Turbo",150]];
 const KEY = "keyflow:v1", SKEY = "keyflow:snips";
@@ -423,14 +422,14 @@ $("#dPlus").onclick  = () => { S.delay = Math.min(30, S.delay + 1); save(); draw
 
 function norm(t) {
   t = t.replace(/\r\n?/g, "\n");
-  return S.mode === "flat" ? t.replace(/\n/g, " ") : t;
+  return t;
 }
 function drawMeta() {
   $("#clear").disabled = !S.text;
   if (busy()) return;
   const t = S.text, n = Array.from(norm(t)).length;
   const lines = t ? t.split(/\r\n|\r|\n/).length : 0;
-  $("#count").textContent = n.toLocaleString() + " characters" + (S.mode === "flat" ? "" : " \u00b7 " + lines + " lines");
+  $("#count").textContent = n.toLocaleString() + " characters \u00b7 " + lines + " lines";
   $("#note").textContent = n ? "about " + fmt(n / S.cps) : "";
 }
 
@@ -560,11 +559,19 @@ def press_newline(mode, nxt):
         return
     tap(Key.enter)
     if mode == "code":
-        time.sleep(0.02)
-        # Safely go to column 0 by pressing Home twice. This bypasses auto-indent
-        # by pushing IDE's spaces to the right, avoiding dangerous text deletion.
-        tap(Key.home)
-        tap(Key.home)
+        time.sleep(0.3)
+        kb.press(Key.space)
+        kb.release(Key.space)
+        time.sleep(0.05)
+        kb.press(Key.shift)
+        kb.press(Key.home)
+        time.sleep(0.05)
+        kb.release(Key.home)
+        kb.release(Key.shift)
+        time.sleep(0.05)
+        kb.press(Key.backspace)
+        kb.release(Key.backspace)
+        time.sleep(0.05)
 
 
 def type_char(ch):
@@ -582,8 +589,7 @@ def finish(state):
 
 def run_job(text, mode, humanize, delay):
     text = text.replace("\r\n", "\n").replace("\r", "\n")
-    if mode == "flat":
-        text = text.replace("\n", " ")
+
     n = len(text)
 
     for s in range(delay, 0, -1):               # time to click the target window
