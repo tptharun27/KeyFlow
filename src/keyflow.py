@@ -560,10 +560,11 @@ def press_newline(mode, nxt):
         return
     tap(Key.enter)
     if mode == "code":
-        time.sleep(0.25)
-        tap(Key.home, Key.shift)
-        kb.type(" ")
-        tap(Key.backspace)
+        time.sleep(0.02)
+        # Safely go to column 0 by pressing Home twice. This bypasses auto-indent
+        # by pushing IDE's spaces to the right, avoiding dangerous text deletion.
+        tap(Key.home)
+        tap(Key.home)
 
 
 def type_char(ch):
