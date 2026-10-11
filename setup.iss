@@ -1,6 +1,6 @@
 [Setup]
 AppName=KeyFlow
-AppVersion=1.1.0
+AppVersion=1.2.0
 DefaultDirName={autopf}\KeyFlow
 DefaultGroupName=KeyFlow
 OutputDir=Output

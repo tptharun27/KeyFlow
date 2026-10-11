@@ -1,33 +1,27 @@
 # KeyFlow
 
-KeyFlow is an innovative application that allows you to control your PC's typing remotely from your smartphone browser via Wi-Fi. It is perfect for securely pasting long text snippets, auto-typing code, or securely entering passwords without manual retyping.
+KeyFlow is a desktop + mobile web application that lets you control your PC's keyboard remotely from your smartphone browser over Wi-Fi. It is built for auto-typing code into IDEs with automatic indentation, pasting long text snippets, or entering text across devices.
 
-## 🌟 Features
-- **Remote Typing**: Type or paste on your phone, and your PC will type it exactly.
-- **Code Mode Engine**: Perfectly overwrites your IDE's auto-indentation, preventing line-break mangling.
-- **App Activation**: Secure SHA-256 hashed activation token system.
-- **Background Mode**: Minimizes directly to the System Tray for uninterrupted background functioning.
-- **Smart UI**: Dark mode web UI with typing speed slider, pause/resume, and saved snippets.
+## 🌟 Key Features
+- **Code-Aware Auto-Indent Engine (v2.0)**: Engineered specifically for modern IDEs (VS Code, PyCharm, Sublime, Monaco). Dismisses IntelliSense popups, cleans auto-closed trailing brackets, clears auto-indent to Column 0, and paces leading indentation spaces so indentation is preserved even at high typing speeds.
+- **3 Dedicated Typing Modes**:
+  1. **Code**: Smart auto-indent reset (`Enter` + Column 0 reset + paced indentation).
+  2. **Shift+Enter**: Inserts line breaks without sending messages in chat apps (WhatsApp, Discord, Slack, Teams).
+  3. **Enter**: Standard plain `Enter` keystroke at every line break.
+- **Full Desktop Dashboard**:
+  - Resizable two-column desktop UI with top menu bar (**File**, **View**, **Settings**, **Build Info**).
+  - Live telemetry monitor (progress bar, active mode, CPS/WPM readout, PC Pause/Stop controls, and activity log).
+  - Instant QR Code pairing with embedded PIN and one-click URL/PIN copy.
+  - Minimizes cleanly to the Windows System Tray for background operation.
+- **Global Hotkeys**:
+  - `F8` — Emergency Stop
+  - `F9` — Pause / Resume Typing
 
-## 🔧 Installation
-1. Run `KeyFlowSetup.exe` to install the desktop application.
-2. Provide a valid Product Activation Key (refer to `activation_keys.txt`).
-3. Click **Start Server** and scan the QR code using your phone's camera.
-
-## 💻 How It Works
-- The application launches a lightweight background HTTP server on a dynamically assigned port (default 8765).
-- It creates a local access tunnel requiring a 6-digit PIN.
-- Upon receiving text from the web UI, it simulates keystrokes natively using `pynput`, seamlessly navigating different editor environments (like VS Code, Notepad, Slack, etc.) using specific Line Break modes.
-
-## 🛠️ Modes
-1. **Code**: Presses Enter, waits for the IDE to auto-indent, then selects and clears the indent so your original pasted whitespace remains identical.
-2. **Shift+Enter**: For chat apps (like Slack/Discord) to prevent early sending.
-3. **Enter**: Standard line break typing.
-4. **One Line**: Strips out all newlines and types continuously as a single line.
-
-## 🛡️ Security
-- **End-to-end Local**: Works entirely on your Local Area Network (LAN). No data is sent over the open internet.
-- **Obfuscation**: The source codebase is heavily obfuscated using PyArmor to protect core logic and the hashed activation keys.
+## 🔧 Installation & Usage
+1. Run `Output\KeyFlowSetup.exe` to install **KeyFlow** on your PC (or run `dist\KeyFlow.exe` directly).
+2. Enter your Product Activation Key on first launch.
+3. Scan the QR code shown on the PC dashboard using your phone camera (on the same Wi-Fi network).
+4. Paste your code or text on your phone, choose **Code**, **Shift+Enter**, or **Enter**, and tap **Start typing**.
 
 ## 📄 License
-This project is licensed under the custom KeyFlow EULA. Refer to `eula.txt` for details.
+Licensed under the KeyFlow EULA (`eula.txt`).
